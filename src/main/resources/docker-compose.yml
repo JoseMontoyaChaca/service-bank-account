@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+ mongo-bank-account:
+   image: "mongo"
+   container_name: "mongo-bank-account"
+   ports:
+     - 27017:27017
+ service-bank-account:
+   image: service-bank-account
+   container_name : service-bank-account
+   ports:
+     - 8072:8072
+   links:
+     - mongo-bank-account

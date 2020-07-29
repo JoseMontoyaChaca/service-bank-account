@@ -21,18 +21,25 @@ public class BankAccountController {
 	@Autowired
 	BankAccountService bankAccountService;
 	
-	@PostMapping("/addBA")
-	public Mono<BankAccount> saveBA (@RequestBody BankAccount bk){
+	@PostMapping("/addBankAaccount")
+	public Mono<BankAccount> save (@RequestBody BankAccount bk){
+		
+		
 		return bankAccountService.save(bk);
 	}
 	
-	@GetMapping("/allBA")
-	public Flux<BankAccount> allBA (){
+	@GetMapping("/findByHolder/{holder}")
+	public Mono<BankAccount> findByHolder(@PathVariable String holder){
+		return bankAccountService.findbyHolder(holder);
+	}
+	
+	@GetMapping("/getAllBankAccount")
+	public Flux<BankAccount> getAllBankAccount (){
 		return  bankAccountService.allBankAccount();
 	}
 	
 	@GetMapping("/getDNI/{dniCustomer}")
-		public Mono<BankAccount> findDNI(@PathVariable String dniCustomer){
+		public Flux<BankAccount> findDNI(@PathVariable String dniCustomer){
 		return bankAccountService.findDNI(dniCustomer);
 	
 	}

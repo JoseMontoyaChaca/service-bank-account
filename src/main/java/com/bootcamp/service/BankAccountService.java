@@ -28,7 +28,19 @@ public class BankAccountService {
 	}
 
 	
-	public Mono<BankAccount> findDNI(String dniCustomer){
+	public Flux<BankAccount> findDNI(String dniCustomer){
 		return repository.findDNI(dniCustomer);
 	}
+	
+	
+	
+	public Mono<BankAccount> findbyHolder(String holder){
+		 Flux<BankAccount> bank = repository.findAll().filter(h -> h.getHolder().equals(holder));
+		 return Mono.from(bank);
+	}
+	
+	
+	
+	
+	
 }
