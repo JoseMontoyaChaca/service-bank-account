@@ -17,10 +17,11 @@ public class BankAccount implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private Integer id;	
 	private String nameAccount;
-	private Long  cardNumber;
+	private String accountNumber;
 	private Holder holder;
 	private  Signatory signatory;
 	private String dniCustomer;
